@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "apy+HYZkHO8oIdHS5bWkhPFXh+2oZHDFdKh5ck/AhKKqFgAwkyORooJQqnhOw3hsDL/amjYG8cmglrR+TGgFvg==",
+  "success": true,
+  "projectFilePath": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage.csproj",
+  "expectedPackageFiles": [
+    "/home/yeg/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/yeg/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
