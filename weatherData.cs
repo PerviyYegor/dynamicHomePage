@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using System.Net;
+using System.IO;
 
 public class HourlyUnits
 {
@@ -44,34 +45,33 @@ public class WeatherData
     public DailyUnits daily_units { get; set; }
     public Daily daily { get; set; }
 
-    public static void PrintWeatherData(WeatherData weatherData)
+    public static string GetWeatherDataString(WeatherData weatherData)
     {
-        Console.WriteLine($"Latitude: {weatherData.latitude}");
-        Console.WriteLine($"Longitude: {weatherData.longitude}");
-        Console.WriteLine($"Generation Time: {weatherData.generationtime_ms} (UTC{weatherData.utc_offset_seconds / 3600:+#;-#})");
-        Console.WriteLine($"Timezone: {weatherData.timezone} ({weatherData.timezoneAbbreviation})");
-        Console.WriteLine($"Elevation: {weatherData.elevation} m\n");
+        string weatherInfo = "";
+        weatherInfo += $"Latitude: {weatherData.latitude}\n";
+        weatherInfo += $"Longitude: {weatherData.longitude}\n";
+        weatherInfo += $"Timezone: {weatherData.timezone} ({weatherData.timezoneAbbreviation})\n";
+        weatherInfo += $"Elevation: {weatherData.elevation} m\n\n";
 
-        Console.WriteLine("Hourly Data:");
-        Console.WriteLine($"{ "Time",20} { "Temperature",15} { "Humidity",15} { "Rainfall",15}");
+        weatherInfo += "Hourly Data:\n";
+        weatherInfo += ($"{"Time",15} {"Temperature",15} {"Humidity",15} {"Rainfall",15}\n");
         for (int i = 0; i < weatherData.hourly.time.Count; i++)
         {
-            Console.WriteLine($"{weatherData.hourly.time[i],20} {weatherData.hourly.temperature_2m[i],15:F1} {weatherData.hourly.relativehumidity_2m[i],15:F0}% {weatherData.hourly.rain[i],15:F2} mm");
+            weatherInfo += ($"{weatherData.hourly.time[i].Substring(weatherData.hourly.time[i].Length-5),15} {weatherData.hourly.temperature_2m[i],15:F1} {weatherData.hourly.relativehumidity_2m[i],15:F0}% {weatherData.hourly.rain[i],15:F2} mm\n");
         }
-        Console.WriteLine();
 
-        Console.WriteLine("Daily Data:");
-        Console.WriteLine($"Today is {weatherData.daily.time[0]}");
-        Console.WriteLine($"and best sunset will at {weatherData.daily.sunset[0]}");
-        
+        weatherInfo += ("Daily Data:\n");
+        weatherInfo += ($"Today is {weatherData.daily.time[0]}\n");
+        weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0]}\n");
+        return weatherInfo;
     }
 }
 
 
-class Program
+class WeatherDataFacade
 {
     public static string apiWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=50.45&longitude=30.52&hourly=temperature_2m,relativehumidity_2m,rain&daily=sunset&windspeed_unit=ms&forecast_days=1&timezone=auto";
-    static void Main(string[] args)
+    public static bool collectWeatherData(double latitude, double longitude, string jsonPath, string humanReadablePath)
     {
         try
         {
@@ -79,14 +79,28 @@ class Program
             {
                 string json = client.DownloadString(apiWeatherURL);
                 WeatherData weatherDatas = JsonConvert.DeserializeObject<WeatherData>(json);
+                string weatherInfo = WeatherData.GetWeatherDataString(weatherDatas);
 
 
-                WeatherData.PrintWeatherData(weatherDatas);
+                WeatherDataFacade.writeToFile(jsonPath, json);
+                WeatherDataFacade.writeToFile(humanReadablePath, weatherInfo);
             }
+
+
+            Console.WriteLine($"Is fine! Your data in human readable format collect in {humanReadablePath} and in json format in {jsonPath}");
+            return true;
         }
         catch (WebException)
         {
-            Console.WriteLine($"Parsing went wrong :(");
+            Console.WriteLine($"Weather parsing went wrong :(");
+            return false;
         }
+    }
+
+    private static void writeToFile(string path, string content)
+    {
+        string directoryPath = Path.GetDirectoryName(path);
+        Directory.CreateDirectory(directoryPath);
+        File.WriteAllText(path, content);
     }
 }

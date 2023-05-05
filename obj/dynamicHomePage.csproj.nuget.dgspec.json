@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage.csproj": {}
+    "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/dynamicHomePage.csproj": {}
   },
   "projects": {
-    "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage.csproj": {
+    "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/dynamicHomePage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage.csproj",
+        "projectUniqueName": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/dynamicHomePage.csproj",
         "projectName": "dynamicHomePage",
-        "projectPath": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage.csproj",
+        "projectPath": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/dynamicHomePage.csproj",
         "packagesPath": "/home/yeg/.nuget/packages/",
-        "outputPath": "/home/yeg/SoftServeEducation/dynamicHomePage/obj/",
+        "outputPath": "/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/yeg/.nuget/NuGet/NuGet.Config"
