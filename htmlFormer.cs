@@ -4,7 +4,7 @@ class htmlFormer
     {
         string today = DateTime.Now.ToString("yyyy-MM-dd");
         string inputFilePath = "./humanReadable/2023-05-06/weather.txt";
-        string outputFilePath = "docs/weather.html";
+        string outputFilePath = "docs/index.html";
 
         // Зчитуємо рядки з вхідного файлу
         string[] lines = File.ReadAllLines(inputFilePath);
