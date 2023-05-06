@@ -1,11 +1,10 @@
 <html>
 <head><title>HomePage</title><link rel="stylesheet" href="pageStyles.css"></head>
 <body>
-<h2>Hello, Friend! Today is </h2>
-<p><?php echo date("Y-m-d"); ?></p>
+<p><?php $date = date("Y-m-d"); ?></p>
+<h2>Hello, Friend! Today is <?php echo $date; ?></p></h2>
 <div>
-<div><object data="../humanReadable/2023-05-07/weather.txt"></object></div>
+<div><object data="../humanReadable/<?php echo $date; ?>/weather.txt"></object></div>
 </div>
-<?php echo "Сьогоднішня дата: ". $date;?>
 </body>
 </html>
