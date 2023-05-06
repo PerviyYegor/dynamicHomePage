@@ -65,6 +65,7 @@ public class WeatherData
         weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0]}\n");
         return weatherInfo;
     }
+    
 }
 
 
