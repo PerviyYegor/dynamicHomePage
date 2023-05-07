@@ -13,7 +13,7 @@
             var day = ("0" + currentDate.getDate()).slice(-2);
             var formattedDate = year + "-" + month + "-" + day;
             document.getElementById("current-date").innerHTML = formattedDate;
-            var url = '../humanReadable/' + formattedDate + '/weather.txt';
+            var url = 'https://raw.githubusercontent.com/PerviyYegor/dynamicHomePage/main/humanReadable/'+ formattedDate+'/weather.txt';
             var iframe = document.createElement('iframe');
             iframe.setAttribute('src', url);
             iframe.setAttribute('frameborder', '0');
