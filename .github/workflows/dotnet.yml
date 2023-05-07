@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '0 18 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   build:
@@ -28,11 +28,17 @@ jobs:
       run: dotnet build
     - name: Run app
       run: dotnet run
-    - name: Push to repository
+    - name: Commit files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit ./humanReadable ./json -m "New day - new data!"
+    - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.API_TOKEN }}
-        branch: main
+        force: true
+        tags: true
+
   
 #    - name: Test
 #      run: dotnet test --no-build --verbosity normal
