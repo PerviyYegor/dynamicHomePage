@@ -56,8 +56,8 @@ public class WeatherData
         weatherInfo += $"Longitude: {weatherData.longitude}\n\n";
         weatherInfo += ("Daily Data:\n");
         weatherInfo += ($"Today is {weatherData.daily.time[0]}\n");
-        weatherInfo += ($"Best sunrise was at {weatherData.daily.sunrise[0]}\n");
-        weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0]}\n\n");
+        weatherInfo += ($"Best sunrise was at {weatherData.daily.sunrise[0].Substring(weatherData.daily.sunrise[0].Length - 5)}\n");
+        weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0].Substring(weatherData.daily.sunset[0].Length - 5)}\n\n");
 
         weatherInfo += "Hourly Data:\n";
         weatherInfo += ($"{"Time",8} {"Temperature",12} {"Humidity",12} {"CloudCover",12}\n");
