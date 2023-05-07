@@ -8,7 +8,7 @@ public class HourlyUnits
     public string time { get; set; }
     public string temperature_2m { get; set; }
     public string relativehumidity_2m { get; set; }
-    public string rain { get; set; }
+    public string cloudcover { get; set; }
 }
 
 public class Hourly
@@ -16,19 +16,22 @@ public class Hourly
     public List<string> time { get; set; }
     public List<double> temperature_2m { get; set; }
     public List<int> relativehumidity_2m { get; set; }
-    public List<double> rain { get; set; }
+    public List<double> cloudcover { get; set; }
 }
 
 public class DailyUnits
 {
     public string time { get; set; }
+    public string sunrise { get; set; }
     public string sunset { get; set; }
 }
 
 public class Daily
 {
     public List<string> time { get; set; }
+    public List<string> sunrise { get; set; }
     public List<string> sunset { get; set; }
+
 }
 
 public class WeatherData
@@ -48,32 +51,32 @@ public class WeatherData
     public static string GetWeatherDataString(WeatherData weatherData)
     {
         string weatherInfo = "";
+        weatherInfo += "City: Kyiv\n";
         weatherInfo += $"Latitude: {weatherData.latitude}\n";
-        weatherInfo += $"Longitude: {weatherData.longitude}\n";
-        weatherInfo += $"Timezone: {weatherData.timezone} ({weatherData.timezoneAbbreviation})\n";
-        weatherInfo += $"Elevation: {weatherData.elevation} m\n\n";
-
-        weatherInfo += "Hourly Data:\n";
-        weatherInfo += ($"{"Time",15} {"Temperature",15} {"Humidity",15} {"Rainfall",15}\n");
-        for (int i = 0; i < weatherData.hourly.time.Count; i++)
-        {
-            weatherInfo += ($"{weatherData.hourly.time[i].Substring(weatherData.hourly.time[i].Length-5),15} {weatherData.hourly.temperature_2m[i],15:F1} {weatherData.hourly.relativehumidity_2m[i],15:F0}% {weatherData.hourly.rain[i],15:F2} mm\n");
-        }
-
+        weatherInfo += $"Longitude: {weatherData.longitude}\n\n";
         weatherInfo += ("Daily Data:\n");
         weatherInfo += ($"Today is {weatherData.daily.time[0]}\n");
-        weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0]}\n");
+        weatherInfo += ($"Best sunrise was at {weatherData.daily.sunrise[0]}\n");
+        weatherInfo += ($"and best sunset will at {weatherData.daily.sunset[0]}\n\n");
+
+        weatherInfo += "Hourly Data:\n";
+        weatherInfo += ($"{"Time",8} {"Temperature",12} {"Humidity",12} {"CloudCover",12}\n");
+        for (int i = 0; i < weatherData.hourly.time.Count; i++)
+        {
+            weatherInfo += ($"{weatherData.hourly.time[i].Substring(weatherData.hourly.time[i].Length - 5),8} {weatherData.hourly.temperature_2m[i],12:F1} {weatherData.hourly.relativehumidity_2m[i],12:F0}% {weatherData.hourly.cloudcover[i],12:F2}%\n");
+        }
+
         return weatherInfo;
     }
-    
+
 }
 
 
 class WeatherDataFacade
 {
-    public static string apiWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=50.45&longitude=30.52&hourly=temperature_2m,relativehumidity_2m,rain&daily=sunset&windspeed_unit=ms&forecast_days=1&timezone=auto";
     public static bool collectWeatherData(double latitude, double longitude, string jsonPath, string humanReadablePath)
     {
+        string apiWeatherURL = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,relativehumidity_2m,cloudcover&daily=sunrise,sunset&windspeed_unit=ms&forecast_days=1&timezone=auto";
         try
         {
             using (WebClient client = new WebClient())
