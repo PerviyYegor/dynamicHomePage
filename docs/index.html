@@ -24,9 +24,6 @@
                     ouput = this.responseText;
                     var iframe = document.createElement('iframe');
                     iframe.setAttribute('srcdoc', "<div style=\"text-align:center; color:\#ECEFF4\"><pre>" + this.responseText + "</pre></div>");
-                    iframe.setAttribute('frameborder', '0');
-                    iframe.setAttribute('width', '27%');
-                    iframe.setAttribute('height', '300');
                     document.body.appendChild(iframe);
                 }
             };
