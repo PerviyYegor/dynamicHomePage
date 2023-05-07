@@ -1,8 +1,10 @@
 <html>
+
 <head>
     <title>HomePage</title>
     <link rel="stylesheet" href="pageStyles.css">
 </head>
+
 <body>
     <h2>Hello, Friend! Today is <span id="current-date"></span></h2>
     <div id="weather">
@@ -13,15 +15,25 @@
             var day = ("0" + currentDate.getDate()).slice(-2);
             var formattedDate = year + "-" + month + "-" + day;
             document.getElementById("current-date").innerHTML = formattedDate;
-            var url = 'https://raw.githubusercontent.com/PerviyYegor/dynamicHomePage/main/humanReadable/'+ formattedDate+'/weather.txt';
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', url);
-            iframe.setAttribute('frameborder', '0');
-            iframe.setAttribute('width', '27%');
-            iframe.setAttribute('height', '300');
-            document.body.appendChild(iframe);
+            var url = "https://raw.githubusercontent.com/PerviyYegor/dynamicHomePage/main/humanReadable/" + formattedDate + "/weather.txt";
+            var xhttp = new XMLHttpRequest();
+            var output = "";
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    ouput = this.responseText;
+                    var iframe = document.createElement('iframe');
+                    iframe.setAttribute('srcdoc', "<div><pre>" + this.responseText + "</pre></div>");
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('width', '27%');
+                    iframe.setAttribute('height', '300');
+                    document.body.appendChild(iframe);
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
         </script>
     </div>
 </body>
-</html>
 
+</html>
