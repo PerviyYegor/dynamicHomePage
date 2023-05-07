@@ -3,6 +3,7 @@ Latitude: 50.4375
 Longitude: 30.5
 
 Daily Data:
+
 Today is 2023-05-07
 Best sunrise was at 05:21
 and best sunset will at 20:27
