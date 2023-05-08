@@ -91,7 +91,7 @@ class WeatherDataFacade
             }
 
 
-            Console.WriteLine($"Is fine! Your data in human readable format collect in {humanReadablePath} and in json format in {jsonPath}");
+            Console.WriteLine($"Is fine! Your data about today weather in human readable format collect in {humanReadablePath} and in json format in {jsonPath}");
             return true;
         }
         catch (WebException)
