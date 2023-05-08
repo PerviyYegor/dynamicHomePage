@@ -7,15 +7,17 @@
 
 <body>
     <h2>Hello, Friend! Today is <span id="current-date"></span></h2>
-    <div id="weather">
-        <script>
+    <div id="weather"></div>
+    <div id="exchange"></div>
+    <script>
+        function getData(path, targetId) {
             var currentDate = new Date();
             var year = currentDate.getFullYear();
             var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
             var day = ("0" + currentDate.getDate()).slice(-2);
             var formattedDate = year + "-" + month + "-" + day;
             document.getElementById("current-date").innerHTML = formattedDate;
-            var url = "https://raw.githubusercontent.com/PerviyYegor/dynamicHomePage/main/humanReadable/" + formattedDate + "/weather.txt";
+            var url = "https://raw.githubusercontent.com/PerviyYegor/dynamicHomePage/main/humanReadable/" + formattedDate + "/" + path;
             var xhttp = new XMLHttpRequest();
             var output = "";
             xhttp.onreadystatechange = function () {
@@ -24,13 +26,15 @@
                     ouput = this.responseText;
                     var iframe = document.createElement('iframe');
                     iframe.setAttribute('srcdoc', "<div style=\"text-align:center; color:\#ECEFF4\"><pre>" + this.responseText + "</pre></div>");
-                    document.body.appendChild(iframe);
+                    document.getElementById(targetId).appendChild(iframe);
                 }
             };
             xhttp.open("GET", url, true);
             xhttp.send();
-        </script>
-    </div>
+        }
+        getData("weather.txt", "weather");
+        getData("exchangeRate.txt", "exchange");
+    </script>
 </body>
 
 </html>

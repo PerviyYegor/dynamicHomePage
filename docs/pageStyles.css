@@ -16,7 +16,11 @@ span {
 }
 
 #weather {
-  display: flex;
+  display: inline;
+}
+
+#exchange{
+  display: inline;
 }
 
 iframe {

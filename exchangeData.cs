@@ -14,9 +14,10 @@ public class ExchangeRate
     public static string getExchangeInfo(List<ExchangeRate> exchangeRates)
     {
         string exchangeString = "";
+        exchangeString+="The official exchange rate of the hryvnia\n";
         foreach (var rate in exchangeRates)
         {
-            exchangeString+=($"{rate.txt} ({rate.cc}): {rate.rate}\n");
+            exchangeString+=($"{rate.txt} ({rate.cc}): {rate.rate}\n\n");
         }
         return exchangeString;
     }
