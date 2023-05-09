@@ -32,3 +32,12 @@
 /home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/obj/Debug/net7.0/dynamicHomePage.pdb
 /home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/obj/Debug/net7.0/dynamicHomePage.genruntimeconfig.cache
 /home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/obj/Debug/net7.0/ref/dynamicHomePage.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Configuration.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Configuration.FileExtensions.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Json.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Configuration.UserSecrets.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Abstractions.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Physical.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.FileSystemGlobbing.dll
+/home/yeg/SoftServeEducation/dynamicHomePage/dynamicHomePage/bin/Debug/net7.0/Microsoft.Extensions.Primitives.dll

@@ -53,7 +53,7 @@ public class ExchangeRateFacade
             return false;
         }
     }
-     private static void writeToFile(string path, string content)
+    private static void writeToFile(string path, string content)
     {
         string directoryPath = Path.GetDirectoryName(path);
         Directory.CreateDirectory(directoryPath);
