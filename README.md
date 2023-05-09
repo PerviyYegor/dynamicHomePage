@@ -11,10 +11,10 @@ Here are some key points to highlight the features and benefits of DynamicHomePa
 
    4. Versatile Use Cases: DynamicHomePage is a flexible project that can be adapted to a variety of use cases. Some examples of how it can be used include:
 
-     - Monitoring stock prices or financial data
-     - Displaying weather forecasts for a specific location
-     - Tracking the status of a specific service or system
-     - Providing updates on news or social media trends
+  - Monitoring stock prices or financial data
+  - Displaying weather forecasts for a specific location
+  - Tracking the status of a specific service or system
+  - Providing updates on news or social media trends
 
    5. Historical Record: DynamicHomePage also has the ability to create a journal of past API data and save it in the Github repository with each reload. By saving the past API data in the repository, users can easily access and analyze the data at a later time, making it easier to track changes and trends over time.
 
