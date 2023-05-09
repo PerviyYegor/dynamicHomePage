@@ -27,6 +27,8 @@ jobs:
     - name: Build app
       run: dotnet build
     - name: Run app
+      env:
+        apiQuoteSet: ${{ secrets.APIQUOTE  }}
       run: dotnet run
     - name: Commit files
       run: |
@@ -39,7 +41,3 @@ jobs:
       with:
         force: true
         tags: true
-
-  
-#    - name: Test
-#      run: dotnet test --no-build --verbosity normal
