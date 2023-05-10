@@ -11,10 +11,10 @@ class Quote
 
     public static string getQuoteInfo(List<Quote> quos)
     {
-        string quot = "";
+        string quot = $"Here is your quote of the day ({DateTime.Now.ToString("yyyy-MM-dd")})";
         foreach(var quo in quos ){
             quot += (quo.quote+"\n");
-            quot += ($"(c) {quo.author}");
+            quot += ($"(c) {quo.author}\n");
         }
         return quot;
     }
@@ -39,7 +39,6 @@ public class quoteData
         if (response.IsSuccessStatusCode)
         {
             string json = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(json);
 
             List<Quote> responseContent = JsonConvert.DeserializeObject<List<Quote>>(json);
 

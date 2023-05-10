@@ -7,9 +7,11 @@
 
 <body>
     <h2>Hello, Friend! Today is <span id="current-date"></span></h2>
+    <div id = "api">
     <div id="weather"></div>
     <div id="exchange"></div>
     <div id="quote"></div>
+    </div>
     <script>
         function getData(path, targetId) {
             var currentDate = new Date();
@@ -26,7 +28,7 @@
                     console.log(this.responseText);
                     ouput = this.responseText;
                     var iframe = document.createElement('iframe');
-                    iframe.setAttribute('srcdoc', "<div style=\"text-align:center; color:\#ECEFF4\"><pre>" + this.responseText + "</pre></div>");
+                    iframe.setAttribute('srcdoc', "<div style=\"text-align:center; color:\#ECEFF4;\"><pre>" + this.responseText + "</pre></div>");
                     document.getElementById(targetId).appendChild(iframe);
                 }
             };
