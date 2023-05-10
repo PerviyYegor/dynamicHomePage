@@ -11,7 +11,7 @@ class Quote
 
     public static string getQuoteInfo(List<Quote> quos)
     {
-        string quot = $"Here is your quote of the day ({DateTime.Now.ToString("yyyy-MM-dd")}\n)";
+        string quot = $"Here is your quote of the day ({DateTime.Now.ToString("yyyy-MM-dd")})\n";
         foreach(var quo in quos ){
             quot += (quo.quote+"\n");
             quot += ($"(c) {quo.author}\n");
