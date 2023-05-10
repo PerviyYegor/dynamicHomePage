@@ -5,6 +5,7 @@ body {
 
 h2 {
   font-size: 32px;
+  align-items: center;
   color: #ECEFF4;
   text-align: center;
   margin-top: 50px;
@@ -15,14 +16,6 @@ span {
   color: #88C0D0;
 }
 
-#weather {
-  display: inline;
-}
-
-#exchange{
-  display: inline;
-}
-
 iframe {
   background-color: #3B4252;
   border: none;
@@ -31,9 +24,26 @@ iframe {
   border: 1px solid #4C566A;
   border-radius: 5px;
  
-  margin-left: 100px;
+  margin: 100px;
   width: 430px;
   height: 300px;
+}
+
+#weather {
+  display: inline;
+}
+
+#exchange{
+  display: inline;
+}
+
+#quote{
+  display: inline;
+}
+
+#api{
+  display: flex;
+  align-items: center;
 }
 
 @keyframes fadeInUp {
