@@ -3,9 +3,10 @@
 
 name: .NET
 
+#Schedule block
 on:
-  #push:
-    #branches: [ "main" ]
+  push:
+      branches: [ "main" ]
   schedule:
     - cron: '0 21 * * *'
     
@@ -17,30 +18,42 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
+    #Timezone inside VM Ubuntu
     - name: Set timezone
       uses: szenius/set-timezone@v1.2
       with:
         timezoneLinux: "Europe/Kiev"
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build app
       run: dotnet build
+
     - name: Run app
       env:
+    
+    #API Key to get quote, contains in GitHub secrets
         apiQuoteSet: ${{ secrets.APIQUOTE  }}
       run: dotnet run
+
     - name: Commit files
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add ./humanReadable ./json
         git commit ./humanReadable ./json --allow-empty -m "New day - new data!"
+        
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         force: true
         tags: true
+
+
