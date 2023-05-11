@@ -6,11 +6,10 @@ name: .NET
 #Schedule block
 on:
   push:
-      branches: [ "develop" ]
+      branches: [ "main" ]
   schedule:
     - cron: '0 21 * * *'
     
-
 jobs:
   build:
 
