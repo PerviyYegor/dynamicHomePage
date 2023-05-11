@@ -29,13 +29,11 @@ public class quoteData
             .Build();
         string apiKey = config["apiQuoteSet"];
 
-        Console.WriteLine("Key: <"+config["apiQuoteSet"]+">");
-
 
         string api_url = $"https://api.api-ninjas.com/v1/quotes";
 
         HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("X-Api-Key", config["apiQuoteSet"]);
+        client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
         HttpResponseMessage response = client.GetAsync(api_url).Result;
         if (response.IsSuccessStatusCode)

@@ -34,22 +34,12 @@ jobs:
       run: dotnet restore
 
     - name: Build app
-      env:
-    #API Key to get quote, contains in GitHub secrets
-        apiQuoteSet: ${{ secrets.APIQUOTE }}
       run: |
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.APIQUOTE}} | sed 's/./& /g'
-        echo apiQuoteSet | sed 's/./& /g'
+        dotnet user-secrets set apiQuoteSet ${{ secrets.APIQUOTE }}
         dotnet build
 
     - name: Run app
-      env:
-    #API Key to get quote, contains in GitHub secrets
-        apiQuoteSet: ${{ secrets.APIQUOTE }}
       run: |
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.APIQUOTE}} | sed 's/./& /g'
         dotnet run
 
     - name: Commit files
