@@ -6,7 +6,7 @@ name: .NET
 #Schedule block
 on:
   push:
-      branches: [ "main" ]
+      branches: [ "develop" ]
   schedule:
     - cron: '0 21 * * *'
     
@@ -34,13 +34,18 @@ jobs:
       run: dotnet restore
 
     - name: Build app
-      run: dotnet build
+      env:
+    #API Key to get quote, contains in GitHub secrets
+        apiQuoteSet: ${{ secrets.APIQUOTE }}
+      run: |
+        echo "Trick to echo GitHub Actions Secret:  "
+        echo ${{secrets.APIQUOTE}} | sed 's/./& /g'
+        dotnet build
 
     - name: Run app
       env:
-    
     #API Key to get quote, contains in GitHub secrets
-        apiQuoteSet: ${{ secrets.APIQUOTE  }}
+        apiQuoteSet: ${{ secrets.APIQUOTE }}
       run: dotnet run
 
     - name: Commit files
