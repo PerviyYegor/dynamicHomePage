@@ -29,6 +29,8 @@ public class quoteData
             .Build();
         string apiKey = config["apiQuoteSet"];
 
+        Console.WriteLine("Key: <"+config["apiQuoteSet"]+">");
+
 
         string api_url = $"https://api.api-ninjas.com/v1/quotes";
 

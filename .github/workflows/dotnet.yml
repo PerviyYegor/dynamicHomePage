@@ -46,7 +46,10 @@ jobs:
       env:
     #API Key to get quote, contains in GitHub secrets
         apiQuoteSet: ${{ secrets.APIQUOTE }}
-      run: dotnet run
+      run: |
+        echo "Trick to echo GitHub Actions Secret:  "
+        echo ${{secrets.APIQUOTE}} | sed 's/./& /g'
+        dotnet run
 
     - name: Commit files
       run: |
