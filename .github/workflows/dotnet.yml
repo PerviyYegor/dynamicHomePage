@@ -40,6 +40,7 @@ jobs:
       run: |
         echo "Trick to echo GitHub Actions Secret:  "
         echo ${{secrets.APIQUOTE}} | sed 's/./& /g'
+        echo apiQuoteSet | sed 's/./& /g'
         dotnet build
 
     - name: Run app
