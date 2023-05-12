@@ -10,7 +10,6 @@ on:
   schedule:
     - cron: '0 21 * * *'
     
-
 jobs:
   build:
 
@@ -34,14 +33,13 @@ jobs:
       run: dotnet restore
 
     - name: Build app
-      run: dotnet build
+      run: |
+        dotnet user-secrets set apiQuoteSet ${{ secrets.APIQUOTE }}
+        dotnet build
 
     - name: Run app
-      env:
-    
-    #API Key to get quote, contains in GitHub secrets
-        apiQuoteSet: ${{ secrets.APIQUOTE  }}
-      run: dotnet run
+      run: |
+        dotnet run
 
     - name: Commit files
       run: |
